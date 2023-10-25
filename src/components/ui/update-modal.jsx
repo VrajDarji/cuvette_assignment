@@ -1,11 +1,4 @@
-import { useState } from "react";
-
-const UpdateModal = ({ isOpen, onConfirm, onClose }) => {
-  const [data, setData] = useState({
-    rank: 12890,
-    percentile: 37,
-    score: 7,
-  });
+const UpdateModal = ({ isOpen, onConfirm, onClose, data, setData }) => {
   const options = [
     { tag: "Update your rank", value: data.rank },
     { tag: "Update your percentile", value: data.percentile },
@@ -24,7 +17,7 @@ const UpdateModal = ({ isOpen, onConfirm, onClose }) => {
           </div>
           <div className="con">
             {options.map((option, index) => (
-              <div className="con_bullet">
+              <div className="con_bullet" key={option.tag}>
                 <span>{index + 1}</span>
                 <p>{option.tag}</p>
                 <input

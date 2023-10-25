@@ -27,6 +27,28 @@ nav {
 nav img {
   height: 5rem;
 }
+nav button {
+  padding: 0.5rem 1rem;
+  background: none;
+  border-radius: 0.75rem;
+  border: 2px #ebf0f5 solid;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+nav button span {
+  height: 1.75rem;
+  width: 1.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  background-color: #ebf0f5;
+}
 main {
   width: 100%;
   display: grid;
@@ -261,4 +283,98 @@ main {
 .sidebar button:nth-child(2) {
   color: #142683;
   background-color: #f7f8fa;
+}
+.content ._grid .stats2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.content ._grid .stats2 .box1 {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: start;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 2px #ebf0f5 solid;
+}
+.content ._grid .stats2 .box1 p {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.content ._grid .stats2 .box1 .lists {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.content ._grid .stats2 .box1 .lists .bars {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.content ._grid .stats2 .box1 .lists .bars .full_bar {
+  position: relative;
+  height: 0.6rem;
+  border-radius: 20px;
+  width: 250px;
+}
+.content ._grid .stats2 .box1 .lists .bars .full_bar .completed {
+  position: absolute;
+  height: 100%;
+  border-radius: 20px;
+}
+.content ._grid .stats2 .box1 .lists p {
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: gray;
+  letter-spacing: 0.5px;
+}
+.content ._grid .stats2 .box2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: start;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 2px #ebf0f5 solid;
+}
+.content ._grid .stats2 .box2 .head {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.content ._grid .stats2 .box2 .head p {
+  font-size: 1.2rem;
+  color: black;
+  font-weight: 600;
+}
+.content ._grid .stats2 .box2 .head p:last-child {
+  color: #438af6;
+}
+.content ._grid .stats2 .box2 p {
+  color: gray;
+}
+.content ._grid .stats2 .box2 p span {
+  font-weight: 600;
+}
+.content ._grid .stats1 .box3 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  border: 2px #ebf0f5 solid;
+}
+.content ._grid .stats1 .box3 p {
+  font-size: medium;
+  color: #566474;
+  letter-spacing: 0.2px;
+}
+.content ._grid .stats1 .box3 p span {
+  font-weight: 600;
 }

@@ -2,14 +2,17 @@ import { useState } from "react";
 import UpdateModal from "./update-modal";
 import toast from "react-hot-toast";
 
-const Stats1 = () => {
+const Stats1 = ({ sendDataToParent }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState({ rank: 12980, percentile: 37, score: 7 });
   const updateData = (newData) => {
     setData(newData);
+    console.log(newData);
+    sendDataToParent(data);
     setIsOpen(false);
     toast.success("Data Updated");
   };
+
   const stats = [
     {
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4KsM4M1h7VOhHruHoZTHJJBxyXYyp_ewFcQ&usqp=CAU",
@@ -35,6 +38,8 @@ const Stats1 = () => {
           setIsOpen(false);
         }}
         onConfirm={updateData}
+        data={data}
+        setData={setData}
       />
       <div className="stats1">
         <div className="box1">
@@ -65,6 +70,14 @@ const Stats1 = () => {
               );
             })}
           </div>
+        </div>
+        <div className="box3">
+          <h3>Comparison Graph</h3>
+          <p>
+            <span>You scored {data.percentile}% percentile </span> which is{" "}
+            {data.percentile > 72 ? "higher" : "lower"} than the average
+            percentile 72% of all engineer who took this assesment
+          </p>
         </div>
       </div>
     </>
