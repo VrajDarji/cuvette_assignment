@@ -88,26 +88,28 @@ const Stats1 = ({ sendDataToParent }) => {
             {data.percentile > 72 ? "higher" : "lower"} than the average
             percentile 72% of all engineer who took this assesment
           </p>
-          <LineChart
-            width={800}
-            height={400}
-            data={sorted}
-            margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-          >
-            {sorted.map((entry, index) => (
-              <Dot
-                key={index}
-                cx={entry.tag} // Specify the x-coordinate of the data point
-                cy={entry.value} // Specify the y-coordinate of the data point
-                r={4} // Customize the radius of the dot
-                fill={entry.tag === data.percentile ? "red" : "blue"} // Change the color based on the highlight property
-              />
-            ))}
-            <Line type={"monotone"} dataKey={"value"} stroke="#8884d8" />
-            <XAxis dataKey="tag" />
-            <Tooltip />
-            <Legend />
-          </LineChart>
+          <div style={{ width: "100%" }}>
+            <LineChart
+              width={720}
+              height={400}
+              data={sorted}
+              margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+            >
+              {sorted.map((entry, index) => (
+                <Dot
+                  key={index}
+                  cx={entry.tag} // Specify the x-coordinate of the data point
+                  cy={entry.value} // Specify the y-coordinate of the data point
+                  r={4} // Customize the radius of the dot
+                  fill={entry.tag === data.percentile ? "red" : "blue"} // Change the color based on the highlight property
+                />
+              ))}
+              <Line type={"monotone"} dataKey={"value"} stroke="#8884d8" />
+              <XAxis dataKey="tag" />
+              <Tooltip />
+              <Legend />
+            </LineChart>
+          </div>
         </div>
       </div>
     </>
