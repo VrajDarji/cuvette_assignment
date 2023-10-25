@@ -1,3 +1,6 @@
+import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip } from "chart.js";
+ChartJS.register(ArcElement, Tooltip);
 const Stats2 = ({ data }) => {
   const stats = [
     { tag: "HTML Tools,Forms,History", score: 80, rgb: "67,138,246" },
@@ -5,6 +8,15 @@ const Stats2 = ({ data }) => {
     { tag: "Tables & CSS Basics", score: 24, rgb: "251,94,94" },
     { tag: "Tables & CSS Basics", score: 90, rgb: "46,201,113" },
   ];
+  const pie_data = {
+    labels: ["Correct", "Incorrect"],
+    datasets: [
+      {
+        data: [data.score, 15 - data.score], // Total questions - correct questions
+        backgroundColor: ["#438AF6", "#EDF4FF"],
+      },
+    ],
+  };
   return (
     <>
       <div className="stats2">
@@ -46,6 +58,23 @@ const Stats2 = ({ data }) => {
               ? "Great Job! You did well"
               : "However it still need some improvements"}
           </p>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Doughnut
+              data={pie_data}
+              options={{
+                cutout: 100,
+                radius: 100,
+                padding: "0px",
+              }}
+            />
+          </div>
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import UpdateModal from "./update-modal";
 import toast from "react-hot-toast";
-
+import { Legend, Line, LineChart, Tooltip, XAxis, Dot } from "recharts";
 const Stats1 = ({ sendDataToParent }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState({ rank: 12980, percentile: 37, score: 7 });
@@ -30,6 +30,16 @@ const Stats1 = ({ sendDataToParent }) => {
       p: "correct answers",
     },
   ];
+  const graphdata = [
+    { value: Math.floor(Math.random() * 10), tag: 0 },
+    { value: Math.floor(Math.random() * 40), tag: 20 },
+    { tag: parseInt(data.percentile, 10), value: data.percentile },
+    { value: Math.floor(Math.random() * 100), tag: 40 },
+    { value: Math.floor(Math.random() * 80), tag: 60 },
+    { value: Math.floor(Math.random() * 60), tag: 80 },
+    { value: Math.floor(Math.random() * 10), tag: 100 },
+  ];
+  const sorted = [...graphdata].sort((a, b) => a.tag - b.tag);
   return (
     <>
       <UpdateModal
@@ -78,6 +88,26 @@ const Stats1 = ({ sendDataToParent }) => {
             {data.percentile > 72 ? "higher" : "lower"} than the average
             percentile 72% of all engineer who took this assesment
           </p>
+          <LineChart
+            width={800}
+            height={400}
+            data={sorted}
+            margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+          >
+            {sorted.map((entry, index) => (
+              <Dot
+                key={index}
+                cx={entry.tag} // Specify the x-coordinate of the data point
+                cy={entry.value} // Specify the y-coordinate of the data point
+                r={4} // Customize the radius of the dot
+                fill={entry.tag === data.percentile ? "red" : "blue"} // Change the color based on the highlight property
+              />
+            ))}
+            <Line type={"monotone"} dataKey={"value"} stroke="#8884d8" />
+            <XAxis dataKey="tag" />
+            <Tooltip />
+            <Legend />
+          </LineChart>
         </div>
       </div>
     </>
